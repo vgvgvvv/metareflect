@@ -56,7 +56,7 @@ protected:
     void
     FoundRecord(CXXRecordDecl const *record)
     {
-        m_fileName = m_sourceman->getFilename(record->getLocation());
+        m_fileName = std::string(m_sourceman->getFilename(record->getLocation()));
         m_fileName.erase(m_fileName.end() - 4, m_fileName.end());
         m_fileName.append(".generated.hxx");
         m_classes.emplace_back(ReflectedClass(record));
